@@ -202,7 +202,7 @@
       </section>
 
       <!-- TENTANG -->
-    <section class="section about-section" id="tentang">
+      <section class="section about-section" id="tentang">
         <div class="about-image reveal">
           <img
             src="img/image2.jpeg"
@@ -228,7 +228,7 @@
             Pramuka SMKN 1 Binong, Gajahmada–Srikandi, bukan sekadar organisasi,
             melainkan rumah untuk belajar, bertumbuh, dan mengukir kenangan.
             Berawal dari gagasan pembentukan Ambalan pada tahun 2012, perjalanan
-            kami terus berlanjut hingga pada 20 November 2015, Ambalan Gajahmada
+            kami terus berlanjut hingga pada 20 November 2017, Ambalan Gajahmada
             untuk putra dan Srikandi untuk putri resmi terbentuk.
           </p>
 
@@ -252,6 +252,7 @@
           </a>
         </div>
       </section>
+
       <!-- NILAI PRAMUKA -->
       <section class="values-section">
         <div class="section-heading reveal">
@@ -494,35 +495,63 @@
         <div class="section-heading reveal">
           <p class="eyebrow">GENERASI PENERUS</p>
           <h2>Kenali <span>Anggota Kami</span></h2>
-          <p>Setiap angkatan memiliki cerita dan perannya sendiri.</p>
+          <p>
+            Setiap generasi memiliki nama, cerita, dan perjuangannya sendiri.
+            Bersama, kami meneruskan semangat Gajahmada–Srikandi.
+          </p>
         </div>
 
         <div class="member-grid">
+          <!-- KELAS X -->
           <article class="member-card reveal">
             <span class="member-grade">KELAS X</span>
-            <h3>Angkatan Penjelajah</h3>
-            <p>Langkah pertama mengenal dunia kepramukaan.</p>
-            <a href="#kontak">Kenali angkatan →</a>
+
+            <h3>Generasi Baru</h3>
+
+            <p>
+              Sebuah perjalanan baru akan segera dimulai. Nama generasi sedang
+              dipersiapkan untuk menjadi bagian dari sejarah Gajahmada–Srikandi.
+            </p>
+
+            <span class="member-coming-soon"> ✨ COMING SOON </span>
           </article>
 
+          <!-- KELAS XI -->
           <article class="member-card member-featured reveal">
             <span class="member-grade">KELAS XI</span>
-            <h3>Angkatan Penggerak</h3>
-            <p>Belajar mengambil tanggung jawab dan memimpin kegiatan.</p>
+
+            <h3>Gen. Seraga</h3>
+
+            <p class="member-motto">Sedasa Wira Gatiwirya</p>
+
+            <p>
+              Generasi yang tumbuh dalam semangat, bergerak dalam kebersamaan,
+              dan siap mengambil peran untuk meneruskan perjuangan.
+            </p>
+
             <a href="#kontak">Kenali angkatan →</a>
           </article>
 
+          <!-- KELAS XII -->
           <article class="member-card reveal">
             <span class="member-grade">KELAS XII</span>
-            <h3>Angkatan Teladan</h3>
-            <p>Mewariskan pengalaman dan menyiapkan generasi berikutnya.</p>
+
+            <h3>Gen. Adhiyudra</h3>
+
+            <p class="member-motto">Adhiyaksa Wiradharma Yudhistira</p>
+
+            <p>
+              Generasi yang menempa jiwa kepemimpinan, menjaga nilai pengabdian,
+              dan meninggalkan jejak sebagai bekal bagi penerus berikutnya.
+            </p>
+
             <a href="#kontak">Kenali angkatan →</a>
           </article>
         </div>
 
         <p class="data-note">
-          Keterangan angkatan merupakan contoh dan dapat disesuaikan dengan data
-          resmi.
+          Setiap generasi adalah bagian dari perjalanan dan sejarah Ambalan
+          Gajahmada–Srikandi SMKN 1 Binong.
         </p>
       </section>
 
@@ -595,7 +624,11 @@
 
         <div class="prestasi-grid reveal">
           <!-- KARTU BAZOKA -->
-          <button class="prestasi-card" onclick="bukaPrestasi('bazoka')">
+          <button
+            type="button"
+            class="prestasi-card"
+            onclick="bukaPrestasi('bazoka')"
+          >
             <div class="prestasi-icon">🏆</div>
             <div class="prestasi-info">
               <h3>BAZOKA</h3>
@@ -603,8 +636,13 @@
             </div>
             <span class="prestasi-arrow">↗</span>
           </button>
-          <!-- KARTU GEMA PRAMUKA KWARAN BINONG -->
-          <button class="prestasi-card" onclick="bukaPrestasi('gema')">
+
+          <!-- KARTU GEMA PRAMUKA -->
+          <button
+            type="button"
+            class="prestasi-card"
+            onclick="bukaPrestasi('gema')"
+          >
             <div class="prestasi-icon">🏅</div>
             <div class="prestasi-info">
               <h3>Gema Pramuka</h3>
@@ -612,8 +650,13 @@
             </div>
             <span class="prestasi-arrow">↗</span>
           </button>
+
           <!-- KARTU ARS UNIVERSITY -->
-          <button class="prestasi-card" onclick="bukaPrestasi('ars')">
+          <button
+            type="button"
+            class="prestasi-card"
+            onclick="bukaPrestasi('ars')"
+          >
             <div class="prestasi-icon">🥇</div>
             <div class="prestasi-info">
               <h3>ARS University</h3>
@@ -625,9 +668,15 @@
       </section>
 
       <!-- POPUP DAFTAR PRESTASI -->
-      <div class="prestasi-modal" id="prestasiModal">
-        <div class="prestasi-modal-content">
+      <div class="prestasi-modal" id="prestasiModal" aria-hidden="true">
+        <div
+          class="prestasi-modal-content"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="prestasiJudul"
+        >
           <button
+            type="button"
             class="prestasi-close"
             onclick="tutupPrestasi()"
             aria-label="Tutup popup"
@@ -636,12 +685,17 @@
           </button>
 
           <span class="section-label">OUR ACHIEVEMENTS</span>
+
           <h2 id="prestasiJudul">Daftar Prestasi</h2>
           <p id="prestasiDeskripsi"></p>
 
           <div id="prestasiDaftar" class="prestasi-daftar"></div>
 
-          <button class="prestasi-tutup" onclick="tutupPrestasi()">
+          <button
+            type="button"
+            class="prestasi-tutup"
+            onclick="tutupPrestasi()"
+          >
             Tutup
           </button>
         </div>
