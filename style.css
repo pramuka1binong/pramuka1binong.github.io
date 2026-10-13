@@ -1979,3 +1979,241 @@ footer {
 .daftar-anggota[hidden] {
   display: none;
 }
+
+/* ==============================
+   PRESTASI
+============================== */
+
+.prestasi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.prestasi-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 22px;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 16px;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.prestasi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+}
+
+.prestasi-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  font-size: 27px;
+  background: rgba(212, 175, 55, 0.13);
+  border-radius: 14px;
+}
+
+.prestasi-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.prestasi-info h3 {
+  margin: 0 0 7px;
+  font-size: 17px;
+}
+
+.prestasi-info p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+.prestasi-arrow {
+  flex-shrink: 0;
+  font-size: 22px;
+}
+
+/* ==============================
+   POPUP PRESTASI
+============================== */
+
+.prestasi-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.prestasi-modal.active {
+  display: flex;
+}
+
+.prestasi-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 30px;
+  color: var(--text-color, #1f2937);
+  background: var(--card-bg, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  animation: prestasiMuncul 0.25s ease;
+}
+
+.prestasi-modal-content h2 {
+  margin: 12px 35px 10px 0;
+  font-size: 27px;
+  line-height: 1.3;
+}
+
+.prestasi-modal-content > p {
+  margin: 0 0 22px;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+.prestasi-close {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.prestasi-close:hover {
+  background: rgba(128, 128, 128, 0.13);
+}
+
+.prestasi-daftar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prestasi-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 14px;
+  background: rgba(128, 128, 128, 0.08);
+  border-radius: 12px;
+}
+
+.prestasi-nomor {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  background: #b89535;
+  border-radius: 10px;
+}
+
+.prestasi-item p {
+  margin: 0;
+  padding-top: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.prestasi-tutup {
+  width: 100%;
+  margin-top: 22px;
+  padding: 13px 18px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  background: #173f35;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.prestasi-tutup:hover {
+  background: #245a4b;
+}
+
+@keyframes prestasiMuncul {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 900px) {
+  .prestasi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .prestasi-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .prestasi-card {
+    padding: 17px;
+  }
+
+  .prestasi-modal {
+    padding: 12px;
+  }
+
+  .prestasi-modal-content {
+    max-height: 90vh;
+    padding: 23px 17px;
+    border-radius: 16px;
+  }
+
+  .prestasi-modal-content h2 {
+    font-size: 22px;
+  }
+
+  .prestasi-item {
+    gap: 10px;
+    padding: 11px;
+  }
+}
