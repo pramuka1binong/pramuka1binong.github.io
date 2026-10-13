@@ -259,7 +259,10 @@ if ("IntersectionObserver" in window) {
   });
 }
 
-// DATA PRESTASI BAZOKA
+/* =========================================
+   DATA PRESTASI BAZOKA
+========================================= */
+
 const prestasiBazoka = [
   "Juara Jawara LKBB Seluruh Tingkatan",
   "Juara Umum LKBB Tingkat Penegak",
@@ -279,7 +282,25 @@ const prestasiBazoka = [
   "Juara Utama 1 Morse Putri",
 ];
 
-// DATA PRESTASI ARS UNIVERSITY
+/* =========================================
+   DATA PRESTASI GEMA PRAMUKA
+   KWARAN BINONG 2026
+========================================= */
+
+const prestasiGema = [
+  "Juara 1 Orasi Puteri",
+  "Juara 3 Orasi Puteri",
+  "Juara 1 Orasi Putera",
+  "Juara 1 Debat Puteri",
+  "Juara 3 Debat Puteri",
+  "Juara 1 Debat Putera",
+  "Penghargaan Tim Paduan Suara",
+];
+
+/* =========================================
+   DATA PRESTASI ARS UNIVERSITY
+========================================= */
+
 const prestasiARS = [
   "Juara Harapan 1 Akademik Putri",
   "Juara Harapan 3 Pengetahuan Kepramukaan Putri",
@@ -293,54 +314,135 @@ const prestasiARS = [
   "Juara Harapan 2 Danton Terbaik",
   "Juara Utama 2 PBB Dasar Terbaik",
   "Juara Utama 3 Variasi dan Formasi Terbaik",
-  "Juara Utama 2 LKBB Galaksi Scout",
+  "Juara Utama 2 LKBB Galaksi ScoutArs",
   "Juara Utama 2 Materi Putra (Nilai Keseluruhan Materi)",
   "Juara Terfavorit 2 Sosial Media",
 ];
 
-// FUNGSI MEMBUKA POPUP
+/* =========================================
+   FUNGSI MEMBUKA POPUP PRESTASI
+========================================= */
+
 function bukaPrestasi(jenis) {
   const modal = document.getElementById("prestasiModal");
   const judul = document.getElementById("prestasiJudul");
   const deskripsi = document.getElementById("prestasiDeskripsi");
   const daftar = document.getElementById("prestasiDaftar");
 
-  let data = [];
-
-  if (jenis === "bazoka") {
-    judul.textContent = "Prestasi BAZOKA";
-    deskripsi.textContent = "Daftar pencapaian Pramuka Gandi Sakti di BAZOKA.";
-    data = prestasiBazoka;
-  } else if (jenis === "ars") {
-    judul.textContent = "Prestasi ARS University";
-    deskripsi.textContent =
-      "Daftar pencapaian Pramuka Gandi Sakti di ARS University.";
-    data = prestasiARS;
+  // Pastikan semua elemen popup tersedia
+  if (!modal || !judul || !deskripsi || !daftar) {
+    console.error("Popup prestasi tidak ditemukan. Periksa ID elemen HTML.");
+    return;
   }
 
-  daftar.innerHTML = data
-    .map(
-      (nama, index) => `
-        <div class="prestasi-item">
-            <span class="prestasi-nomor">${index + 1}</span>
-            <div>
-                <strong>${nama}</strong>
-                <span>Prestasi Pramuka Gandi Sakti</span>
-            </div>
-        </div>
-    `,
-    )
-    .join("");
+  let nama = "";
+  let keterangan = "";
+  let data = [];
 
-  modal.classList.add("aktif");
+  // Pilih data sesuai kartu yang diklik
+  switch (jenis) {
+    case "bazoka":
+      nama = "BAZOKA";
+      keterangan = "16 kategori prestasi";
+      data = prestasiBazoka;
+      break;
+
+    case "gema":
+      nama = "Gema Pramuka Kwaran Binong 2026";
+      keterangan = "7 penghargaan";
+      data = prestasiGema;
+      break;
+
+    case "ars":
+      nama = "ARS University";
+      keterangan = "15 kategori prestasi";
+      data = prestasiARS;
+      break;
+
+    default:
+      console.error("Jenis prestasi tidak dikenal:", jenis);
+      return;
+  }
+
+  // Atur judul dan deskripsi popup
+  judul.textContent = nama;
+  deskripsi.textContent = keterangan;
+
+  // Bersihkan daftar dari data sebelumnya
+  daftar.replaceChildren();
+
+  // Masukkan data prestasi ke popup
+  data.forEach(function (prestasi, index) {
+    const item = document.createElement("div");
+    item.className = "prestasi-item";
+
+    const nomor = document.createElement("span");
+    nomor.className = "prestasi-nomor";
+    nomor.textContent = String(index + 1).padStart(2, "0");
+
+    const teks = document.createElement("p");
+    teks.textContent = prestasi;
+
+    item.appendChild(nomor);
+    item.appendChild(teks);
+
+    daftar.appendChild(item);
+  });
+
+  // Tampilkan popup
+  modal.classList.add("active");
+  modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+
+  // Fokuskan tombol tutup agar popup mudah diakses
+  const tombolTutup = modal.querySelector(".prestasi-close");
+
+  if (tombolTutup) {
+    tombolTutup.focus();
+  }
 }
 
-// FUNGSI MENUTUP POPUP
+/* =========================================
+   FUNGSI MENUTUP POPUP PRESTASI
+========================================= */
+
 function tutupPrestasi() {
-  document.getElementById("prestasiModal").classList.remove("aktif");
+  const modal = document.getElementById("prestasiModal");
+
+  if (!modal) {
+    return;
+  }
+
+  modal.classList.remove("active");
+  modal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
+
+/* =========================================
+   TUTUP POPUP DENGAN KLIK DI LUAR KOTAK
+========================================= */
+
+document.addEventListener("click", function (event) {
+  const modal = document.getElementById("prestasiModal");
+
+  if (modal && event.target === modal) {
+    tutupPrestasi();
+  }
+});
+
+/* =========================================
+   TUTUP POPUP DENGAN TOMBOL ESC
+========================================= */
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    const modal = document.getElementById("prestasiModal");
+
+    if (modal && modal.classList.contains("active")) {
+      tutupPrestasi();
+    }
+  }
+});
 
 // TUTUP JIKA AREA GELAP DIKLIK
 document
@@ -370,14 +472,3 @@ function toggleAnggota(bidang) {
   daftar.hidden = sedangTerbuka;
   tombol.textContent = sedangTerbuka ? "Lihat Anggota" : "Sembunyikan Anggota";
 }
-javascript;
-// DATA PRESTASI GEMA PRAMUKA KWARAN BINONG 2026
-const prestasiGema = [
-  "Juara 1 Orasi Puteri",
-  "Juara 3 Orasi Puteri",
-  "Juara 1 Orasi Putera",
-  "Juara 1 Debat Puteri",
-  "Juara 3 Debat Puteri",
-  "Juara 1 Debat Putera",
-  "Penghargaan Tim Paduan Suara",
-];
