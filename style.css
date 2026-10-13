@@ -887,9 +887,9 @@ section {
   text-align: center;
   background:
     linear-gradient(rgba(15, 31, 22, 0.86), rgba(15, 31, 22, 0.92)),
-    url("https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=1800&q=85")
-      center / cover;
+    url("foto3/image17.jpeg") center / cover;
 }
+
 
 .join-content {
   max-width: 700px;
