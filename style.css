@@ -2212,3 +2212,26 @@ footer {
     padding: 11px;
   }
 }
+/* Perbaikan modal prestasi di HP */
+@media screen and (max-width: 768px) {
+  #prestasiModal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    overflow-y: auto;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  #prestasiModal .modal-content {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+}
+
